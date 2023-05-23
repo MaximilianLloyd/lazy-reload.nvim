@@ -3,7 +3,7 @@
 A small utility for lazy.nvim to easily reload a plugin.
 
 
-note: Not all plugins can be reloaded this way, read more about it [https://github.com/folke/lazy.nvim/issues/445](here). 
+note: Not all plugins can be reloaded this way, read more about it [here](https://github.com/folke/lazy.nvim/issues/445). 
 
 ---
 
