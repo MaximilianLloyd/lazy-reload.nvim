@@ -36,5 +36,9 @@ LazyReload.setup = function(opts)
 	})
 end
 
+LazyReload.feed = function()
+	vim.api.nvim_feedkeys(":" .. LazyReload.opts.command_name .. " ", "n", true)
+end
+
 
 return LazyReload
