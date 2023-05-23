@@ -1,56 +1,43 @@
-# Adjacent.nvim
+# lazy-reload.nvim
 
-A tiny telescope extension to find files in the same directory as the current buffer.
+A small utility for lazy.nvim to easily reload a plugin.
 
 ---
 
-## The problem
-
-You're working a on a large codebase with a lot of directories and similar file names. Usually you're working on components or modules for an extended period. You want to quickly be able to find the relevant associated files. But also be able to jump into another component and having the same utility without having to manage some sort of bookmark system.
-
-## The solution
-
-Being able to search files adjecent to the one you're currently working on. In the example shown below i can just search for "scss" instead of the file name.
-
-![alt text](example.png)
+## Example
+![Example of using the plugin](example.png)
 
 --- 
 
 ## Installaton
 
-- (Telescope)[https://github.com/nvim-telescope/telescope.nvim]
-- Install using your favorite plugin manager (here i'm using packer)
+Install the plugin with your preffered package manager:
 
+### lazy.nvim
 ```lua
 ...
-use({ "MaximilianLloyd/adjacent.nvim" })
+return {
+ "MaximilianLloyd/lazy-reload.nvim",
+ opts = {
+  -- your configuration comes here
+  -- or leave it empty to use the default settings
+  -- refer to the configuration section below
+ },
+}
 ...
 
 ```
 
-### Register telescope extension
+### Configuration
+
+Not much to see here, but you can modify the command name.
+
 ```lua
-telescope.load_extension("adjacent")
+{
+	command_name = "ReloadPlugin"
+}
 ```
 
-### Configure search level
-```lua
-	extensions = {
-		adjacent = {
-			level = 1 -- default
-		}
-	},
-```
 
 ### Running
-It can be run by using `Telescope adjacent`.
-
-Then you can map to a key 
-```lua
-vim.keymap.set("n", "<leader>fa", "<cmd>Telescope adjacent<CR>", { noremap = true, silent = false })
-```
-
-
-### Todo
-- [] Ignoring directories
-- [] Be able to send adjacent files to quickfix list
+It can be run by using `ReloadPlugin <plugin name>`.
