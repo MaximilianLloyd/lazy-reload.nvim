@@ -6,7 +6,6 @@ LazyReload.default_config = {
 	command_name = "ReloadPlugin",
 }
 
-
 LazyReload.setup = function(opts)
 	LazyReload.opts = vim.tbl_deep_extend("force", LazyReload.default_config, opts or {})
 
@@ -24,13 +23,15 @@ LazyReload.setup = function(opts)
 		require("lazy.core.loader").reload(plugin)
 		vim.notify(plugin_name .. " reloaded", vim.log.levels.INFO)
 	end, {
-		complete = function()
+		complete = function(arg)
 			local names = {}
+
 			for name, _ in pairs(require("lazy.core.config").plugins) do
 				table.insert(names, name)
 			end
-
-			return names
+			return vim.tbl_filter(function(s)
+				return string.match(s, '^' .. arg)
+			end, names)
 		end,
 		nargs = 1,
 	})
